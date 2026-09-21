@@ -138,7 +138,7 @@ src/
 migrations/      SQL migrations (embedded in the binary)
 tests/           integration and end-to-end tests
 docs/            architecture documentation
-openspec/        implementation plan, one change per phase
+openspec/        specs (specs/) and the archived plan, one change per phase (changes/archive/)
 ```
 
 ---
@@ -233,11 +233,11 @@ it.
 
 - **Use of AI.** The challenge statement forbids AI tools, but HR told me AI
   use was allowed in my case. I used Claude Code as a pair programmer. The
-  work was planned up front as phased OpenSpec changes (`openspec/changes/`)
+  work was planned up front as phased OpenSpec changes (`openspec/changes/archive/`)
   that I reviewed, and each phase was implemented only after my go-ahead. The
   commit history reflects that phase-by-phase progression.
 - `docs/architecture.md` has diagrams of the import flow, the request flow,
   the module dependencies, the data model and the process lifecycle.
-- Each OpenSpec change has its proposal, requirements as testable scenarios,
-  design decisions with alternatives, and the task checklist used during
-  implementation.
+- Each archived OpenSpec change has its proposal, requirements as testable
+  scenarios, design decisions with alternatives, and the task checklist used
+  during implementation. The resulting requirements live in `openspec/specs/`.

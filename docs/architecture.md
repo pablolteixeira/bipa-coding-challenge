@@ -339,7 +339,8 @@ flowchart TB
 
 ## 9. Implementation phases
 
-Each phase is an OpenSpec change under `openspec/changes/`, and each maps to
+Each phase is an OpenSpec change, archived under `openspec/changes/archive/`
+(the resulting specs are in `openspec/specs/`). Each maps to
 one or more logical commits.
 
 ```mermaid
