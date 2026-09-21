@@ -17,9 +17,9 @@
 
 ## 3. Telemetry
 
-- [ ] 3.1 Add `telemetry::init()` configuring `tracing-subscriber` with `EnvFilter` (default `info`), returning `Result` instead of panicking when already initialised
-- [ ] 3.2 `main.rs`: init telemetry, load config (log and exit(1) on error), log the loaded config (redacting the DB password)
-- [ ] 3.3 Unit test for the DB URL redaction helper (with password, without password, unparsable URL)
+- [x] 3.1 Add `telemetry::init()` configuring `tracing-subscriber` with `EnvFilter` (default `info`), returning `Result` instead of panicking when already initialised
+- [x] 3.2 `main.rs`: init telemetry, load config (log and exit(1) on error), log the loaded config (redacting the DB password)
+- [x] 3.3 Unit test for the DB URL redaction helper (`config::redact_database_url`) (with password, without password, unparsable URL)
 
 ## 4. Local infrastructure
 
