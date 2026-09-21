@@ -1,0 +1,4 @@
+# Default database for `cargo test` / `cargo run`, matching the `db` service in
+# docker-compose.yml. An exported DATABASE_URL takes precedence.
+[env]
+DATABASE_URL = { value = "postgres://bipa:bipa@localhost:5432/bipa", force = false }
