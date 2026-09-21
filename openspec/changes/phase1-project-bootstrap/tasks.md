@@ -10,10 +10,10 @@
 
 ## 2. Configuration module
 
-- [ ] 2.1 Define `Config` { database_url, bind_addr: SocketAddr, mempool_url: reqwest::Url, import_interval: Duration, http_client_timeout: Duration }
-- [ ] 2.2 Define `ConfigError` (`Missing(&'static str)`, `Invalid { key, value, reason }`) with thiserror
-- [ ] 2.3 Implement `Config::from_lookup(impl Fn(&str) -> Option<String>)` with defaults and validation, plus `Config::from_env()`
-- [ ] 2.4 Unit tests: all vars set; only DATABASE_URL (defaults); missing DATABASE_URL; non-numeric interval; zero interval; zero timeout; invalid bind addr; invalid URL; empty-string DATABASE_URL treated as missing
+- [x] 2.1 Define `Config` { database_url, bind_addr: SocketAddr, mempool_url: reqwest::Url, import_interval: Duration, http_client_timeout: Duration }
+- [x] 2.2 Define `ConfigError` (`Missing(&'static str)`, `Invalid { key, value, reason }`) with thiserror
+- [x] 2.3 Implement `Config::from_lookup(impl Fn(&str) -> Option<String>)` with defaults and validation, plus `Config::from_env()`
+- [x] 2.4 Unit tests: all vars set; only DATABASE_URL (defaults); missing DATABASE_URL; non-numeric interval; zero interval; zero timeout; invalid bind addr; invalid URL; empty-string DATABASE_URL treated as missing
 
 ## 3. Telemetry
 
