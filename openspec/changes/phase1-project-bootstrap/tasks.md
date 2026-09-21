@@ -1,12 +1,12 @@
 ## 1. Cargo project skeleton
 
-- [ ] 1.1 `cargo init --name bipa-nodes`, set edition 2024, create `src/lib.rs` and a thin `src/main.rs`
-- [ ] 1.2 Add `rust-toolchain.toml` (1.92, components rustfmt + clippy) and `rustfmt.toml`
-- [ ] 1.3 Add `.gitignore` (`/target`, `.env`)
-- [ ] 1.4 Add dependencies: tokio (full), axum, reqwest (json, rustls-tls, no default features), sqlx (postgres, runtime-tokio, tls-rustls, chrono, migrate), serde, serde_json, chrono, thiserror, anyhow, tracing, tracing-subscriber (env-filter, fmt), tower-http (trace, catch-panic, timeout), tokio-util
-- [ ] 1.5 Add dev-dependencies: wiremock, tower (util), http-body-util
-- [ ] 1.6 Add `[lints.clippy]` (unwrap_used, expect_used, panic = deny) and `clippy.toml` (allow-unwrap-in-tests, allow-expect-in-tests, allow-panic-in-tests)
-- [ ] 1.7 Verify `cargo build`, `cargo clippy --all-targets -- -D warnings`, `cargo fmt --check` pass
+- [x] 1.1 `cargo init --name bipa-nodes`, set edition 2024, create `src/lib.rs` and a thin `src/main.rs`
+- [x] 1.2 Add `rust-toolchain.toml` (1.92, components rustfmt + clippy) and `rustfmt.toml`
+- [x] 1.3 Add `.gitignore` (`/target`, `.env`)
+- [x] 1.4 Add dependencies: tokio (full), axum, reqwest (json, rustls-tls, no default features), sqlx (postgres, runtime-tokio, tls-rustls, chrono, migrate), serde, serde_json, chrono, thiserror, anyhow, tracing, tracing-subscriber (env-filter, fmt), tower-http (trace, catch-panic, timeout), tokio-util
+- [x] 1.5 Add dev-dependencies: wiremock, tower (util), http-body-util
+- [x] 1.6 Add `[lints.clippy]` (unwrap_used, expect_used, panic = deny) and `clippy.toml` (allow-unwrap-in-tests, allow-expect-in-tests, allow-panic-in-tests)
+- [x] 1.7 Verify `cargo build`, `cargo clippy --all-targets -- -D warnings`, `cargo fmt --check` pass
 
 ## 2. Configuration module
 
