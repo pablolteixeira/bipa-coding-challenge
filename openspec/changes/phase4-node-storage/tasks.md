@@ -1,6 +1,6 @@
 ## 1. Schema
 
-- [ ] 1.1 Create `migrations/0001_create_nodes.sql` (table, PK, CHECK capacity_sats >= 0, index on rank)
+- [x] 1.1 Create `migrations/0001_create_nodes.sql` (table, PK, CHECK capacity_sats >= 0, index on rank)
 
 ## 2. Repository
 
