@@ -5,20 +5,20 @@
 
 ## 2. Router and handlers
 
-- [ ] 2.1 `src/http/handlers.rs`: `list_nodes`, `health`
-- [ ] 2.2 `src/http/mod.rs`: `router<R>(state) -> Router` with routes, JSON 404 fallback, TraceLayer, CatchPanicLayer (custom JSON), TimeoutLayer
+- [x] 2.1 `src/http/handlers.rs`: `list_nodes`, `health`
+- [x] 2.2 `src/http/mod.rs`: `router<R>(state) -> Router` with routes, JSON 404 fallback, TraceLayer, CatchPanicLayer (custom JSON), TimeoutLayer
 
 ## 3. Unit tests (in-process, `FakeRepository`, `tower::ServiceExt::oneshot`)
 
 - [x] 3.1 `From<&Node> for NodeResponse` on both challenge examples
-- [ ] 3.2 `GET /nodes` with the challenge data gives exact JSON body, 200, content-type application/json
-- [ ] 3.3 `GET /nodes` with an empty repo gives `200 []`
-- [ ] 3.4 Response objects have exactly 4 keys (no leaked internal fields like rank)
-- [ ] 3.5 Order of the response matches repository order
-- [ ] 3.6 Repo error gives 500 with a generic body (asserts no internal message leak)
-- [ ] 3.7 Panicking repo gives 500 JSON, and a second request on the same router gives 200
-- [ ] 3.8 `GET /health` gives 200 `{"status":"ok"}`
-- [ ] 3.9 Unknown route gives 404 JSON; `POST /nodes` gives 405
+- [x] 3.2 `GET /nodes` with the challenge data gives exact JSON body, 200, content-type application/json
+- [x] 3.3 `GET /nodes` with an empty repo gives `200 []`
+- [x] 3.4 Response objects have exactly 4 keys (no leaked internal fields like rank)
+- [x] 3.5 Order of the response matches repository order
+- [x] 3.6 Repo error gives 500 with a generic body (asserts no internal message leak)
+- [x] 3.7 Panicking repo gives 500 JSON, and a second request on the same router gives 200
+- [x] 3.8 `GET /health` gives 200 `{"status":"ok"}`
+- [x] 3.9 Unknown route gives 404 JSON; `POST /nodes` gives 405
 
 ## 4. Integration tests (`tests/api.rs`, `#[sqlx::test]`)
 
