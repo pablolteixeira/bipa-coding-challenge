@@ -6,4 +6,5 @@
 pub mod config;
 pub mod domain;
 pub mod source;
+pub mod storage;
 pub mod telemetry;

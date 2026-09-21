@@ -4,14 +4,14 @@
 
 ## 2. Repository
 
-- [ ] 2.1 Create `src/storage/mod.rs` with the `NodeRepository` trait, `StorageError` (`Database(sqlx::Error)`, `OutOfRange { field, value }`), `connect(url) -> Result<PgPool>`, `migrate(&PgPool)`
-- [ ] 2.2 Create `src/storage/postgres.rs` with `PgNodeRepository { pool }`
-- [ ] 2.3 Implement `replace_all`: checked conversions first, then transaction (DELETE, UNNEST insert with rank = index), commit, return count
-- [ ] 2.4 Implement `list_nodes`: `SELECT ... ORDER BY rank`, map rows back to `Node` (checked `i64` to `u64`)
+- [x] 2.1 Create `src/storage/mod.rs` with the `NodeRepository` trait, `StorageError` (`Database(sqlx::Error)`, `OutOfRange { field, value }`), `connect(url) -> Result<PgPool>`, `migrate(&PgPool)`
+- [x] 2.2 Create `src/storage/postgres.rs` with `PgNodeRepository { pool }`
+- [x] 2.3 Implement `replace_all`: checked conversions first, then transaction (DELETE, UNNEST insert with rank = index), commit, return count
+- [x] 2.4 Implement `list_nodes`: `SELECT ... ORDER BY rank`, map rows back to `Node` (checked `i64` to `u64`)
 
 ## 3. Unit tests
 
-- [ ] 3.1 Conversion helpers: `u64` to `i64` ok / out-of-range; `i64` to `u64` ok / negative
+- [x] 3.1 Conversion helpers: `u64` to `i64` ok / out-of-range; `i64` to `u64` ok / negative
 
 ## 4. Integration tests (`tests/repository.rs`, `#[sqlx::test]`)
 
