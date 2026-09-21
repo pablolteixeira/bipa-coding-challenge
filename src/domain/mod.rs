@@ -3,7 +3,7 @@
 mod format;
 mod node;
 
-pub use format::format_btc;
+pub use format::{format_btc, format_timestamp, timestamp_from_unix};
 pub use node::Node;
 
 #[derive(Debug, thiserror::Error, PartialEq, Eq)]
