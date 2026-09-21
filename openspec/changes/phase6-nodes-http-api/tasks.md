@@ -1,7 +1,7 @@
 ## 1. Response and errors
 
-- [ ] 1.1 `src/http/response.rs`: `NodeResponse { public_key, alias, capacity: String, first_seen: String }` + `From<&Node>`, and `ErrorBody { error }`
-- [ ] 1.2 `src/http/error.rs`: `ApiError` (`Storage(StorageError)`) with `IntoResponse` (log at error, return generic 500 JSON)
+- [x] 1.1 `src/http/response.rs`: `NodeResponse { public_key, alias, capacity: String, first_seen: String }` + `From<&Node>`, and `ErrorBody { error }`
+- [x] 1.2 `src/http/error.rs`: `ApiError` (`Storage(StorageError)`) with `IntoResponse` (log at error, return generic 500 JSON)
 
 ## 2. Router and handlers
 
@@ -10,7 +10,7 @@
 
 ## 3. Unit tests (in-process, `FakeRepository`, `tower::ServiceExt::oneshot`)
 
-- [ ] 3.1 `From<&Node> for NodeResponse` on both challenge examples
+- [x] 3.1 `From<&Node> for NodeResponse` on both challenge examples
 - [ ] 3.2 `GET /nodes` with the challenge data gives exact JSON body, 200, content-type application/json
 - [ ] 3.3 `GET /nodes` with an empty repo gives `200 []`
 - [ ] 3.4 Response objects have exactly 4 keys (no leaked internal fields like rank)
