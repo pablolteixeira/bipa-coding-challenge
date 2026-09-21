@@ -25,4 +25,4 @@
 
 - [x] 4.1 `docker-compose.yml` with a `db` service (postgres:16-alpine, healthcheck `pg_isready`, port 5432, named volume)
 - [x] 4.2 `.env.example` documenting every variable and its default
-- [ ] 4.3 Verify `docker compose up -d db` becomes healthy
+- [x] 4.3 Verify `docker compose up -d db` becomes healthy
