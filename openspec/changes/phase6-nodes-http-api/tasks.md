@@ -22,6 +22,6 @@
 
 ## 4. Integration tests (`tests/api.rs`, `#[sqlx::test]`)
 
-- [ ] 4.1 Seed via `PgNodeRepository::replace_all` with the challenge example, then `GET /nodes` returns the exact challenge JSON
-- [ ] 4.2 Fresh DB: `GET /nodes` gives `[]`
-- [ ] 4.3 Pool closed before the request: 500 JSON and no panic
+- [x] 4.1 Seed via `PgNodeRepository::replace_all` with the challenge example, then `GET /nodes` returns the exact challenge JSON
+- [x] 4.2 Fresh DB: `GET /nodes` gives `[]`
+- [x] 4.3 Pool closed before the request: 500 JSON and no panic
