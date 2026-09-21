@@ -1,0 +1,9 @@
+target
+.git
+.cargo
+.env
+docs
+openspec
+tests
+Dockerfile
+docker-compose.yml

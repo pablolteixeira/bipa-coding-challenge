@@ -1,5 +1,7 @@
 //! Logging setup.
 
+use std::io::IsTerminal;
+
 use tracing_subscriber::EnvFilter;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::{SubscriberInitExt, TryInitError};
@@ -18,7 +20,8 @@ pub fn init() -> Result<(), TryInitError> {
 
     tracing_subscriber::registry()
         .with(filter)
-        .with(tracing_subscriber::fmt::layer())
+        // Colours only on a terminal: `docker compose logs` and files stay clean.
+        .with(tracing_subscriber::fmt::layer().with_ansi(std::io::stdout().is_terminal()))
         .try_init()
 }
 

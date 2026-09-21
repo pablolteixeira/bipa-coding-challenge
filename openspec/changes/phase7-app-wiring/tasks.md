@@ -21,7 +21,7 @@
 
 ## 4. Containerisation
 
-- [ ] 4.1 Multi-stage `Dockerfile` + `.dockerignore`
-- [ ] 4.2 `app` service in `docker-compose.yml` (env, port 3000, depends_on db healthy)
-- [ ] 4.3 Manual check: `docker compose up --build`, then `curl localhost:3000/nodes` returns real data
-- [ ] 4.4 Manual check: `docker compose stop db` while running. `/nodes` returns 500 and the process stays up. `docker compose start db` and it recovers
+- [x] 4.1 Multi-stage `Dockerfile` + `.dockerignore`
+- [x] 4.2 `app` service in `docker-compose.yml` (env, port 3000, depends_on db healthy)
+- [x] 4.3 Manual check: `docker compose up --build`, then `curl localhost:3000/nodes` returns real data
+- [x] 4.4 Manual check: `docker compose stop db` while running. `/nodes` returns 500 and the process stays up. `docker compose start db` and it recovers

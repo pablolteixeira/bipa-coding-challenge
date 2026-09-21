@@ -1,4 +1,18 @@
 services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgres://bipa:bipa@db:5432/bipa
+      BIND_ADDR: 0.0.0.0:3000
+      IMPORT_INTERVAL_SECS: ${IMPORT_INTERVAL_SECS:-60}
+      RUST_LOG: ${RUST_LOG:-info,sqlx=warn}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
   db:
     image: postgres:16-alpine
     environment:
