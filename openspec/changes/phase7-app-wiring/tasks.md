@@ -13,11 +13,11 @@
 
 ## 3. End-to-end tests (`tests/end_to_end.rs`)
 
-- [ ] 3.1 Happy path: wiremock fixture + DB + `App::run` on port 0. `/health` gives 200, `/nodes` eventually equals the formatted fixture
-- [ ] 3.2 Upstream outage: after the first import, switch wiremock to 500. `/nodes` still returns the old data across several intervals
-- [ ] 3.3 Ranking change: switch wiremock to a different fixture. `/nodes` eventually reflects the new ranking and order
-- [ ] 3.4 Graceful shutdown: cancel the token. `App::run` returns `Ok(())` within 5s and the port stops accepting connections
-- [ ] 3.5 Invalid config smoke test: run the built binary (`env!("CARGO_BIN_EXE_bipa-nodes")`) with `IMPORT_INTERVAL_SECS=0`. It exits with code 1, stderr names the variable, and there is no "panicked" in the output
+- [x] 3.1 Happy path: wiremock fixture + DB + `App::run` on port 0. `/health` gives 200, `/nodes` eventually equals the formatted fixture
+- [x] 3.2 Upstream outage: after the first import, switch wiremock to 500. `/nodes` still returns the old data across several intervals
+- [x] 3.3 Ranking change: switch wiremock to a different fixture. `/nodes` eventually reflects the new ranking and order
+- [x] 3.4 Graceful shutdown: cancel the token. `App::run` returns `Ok(())` within 5s and the port stops accepting connections
+- [x] 3.5 Invalid config smoke test: run the built binary (`env!("CARGO_BIN_EXE_bipa-nodes")`) with `IMPORT_INTERVAL_SECS=0`. It exits with code 1, stderr names the variable, and there is no "panicked" in the output
 
 ## 4. Containerisation
 

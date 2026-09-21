@@ -10,8 +10,8 @@ const DEFAULT_FILTER: &str = "info,sqlx=warn";
 /// Installs the global `tracing` subscriber.
 ///
 /// The filter comes from `RUST_LOG` (e.g. `RUST_LOG=bipa_nodes=debug`) and
-/// defaults to `info` (sqlx at `warn`). Returns an error instead of panicking when a subscriber
-/// is already installed.
+/// defaults to `info` (sqlx at `warn`). Returns an error instead of panicking
+/// when a subscriber is already installed.
 pub fn init() -> Result<(), TryInitError> {
     let filter =
         EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new(DEFAULT_FILTER));
