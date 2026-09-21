@@ -23,6 +23,6 @@
 
 ## 4. Integration test (`tests/importer.rs`)
 
-- [ ] 4.1 wiremock serving the fixture + `#[sqlx::test]` Postgres: `run_once` gives the DB contents that `list_nodes` returns
-- [ ] 4.2 wiremock returns 500 after a successful import: `run_once` errors and the DB still holds the first snapshot
-- [ ] 4.3 wiremock changes the ranking between runs: DB reflects the new ranking only
+- [x] 4.1 wiremock serving the fixture + `#[sqlx::test]` Postgres: `run_once` gives the DB contents that `list_nodes` returns
+- [x] 4.2 wiremock returns 500 after a successful import: `run_once` errors and the DB still holds the first snapshot
+- [x] 4.3 wiremock changes the ranking between runs: DB reflects the new ranking only
