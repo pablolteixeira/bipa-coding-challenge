@@ -20,11 +20,11 @@
 
 ## 4. Integration tests (`tests/mempool_client.rs`, wiremock)
 
-- [ ] 4.1 Save a trimmed real response as `tests/fixtures/mempool_rankings.json`
-- [ ] 4.2 200 with fixture returns all nodes, order preserved, fields correct
-- [ ] 4.3 200 with `[]` returns `Ok(vec![])`
-- [ ] 4.4 500 returns `SourceError::Status(500)`; 429 returns `Status(429)`
-- [ ] 4.5 Response delayed past a 1s timeout returns `SourceError::Request`, and the test asserts it finished in under 3s
-- [ ] 4.6 200 with `{"not":"an array"}` and with `garbage` returns `SourceError::Decode`
-- [ ] 4.7 Unreachable port returns `SourceError::Request`
-- [ ] 4.8 `#[ignore]` live test against the real mempool.space (run manually with `cargo test -- --ignored`)
+- [x] 4.1 Save a trimmed real response as `tests/fixtures/mempool_rankings.json`
+- [x] 4.2 200 with fixture returns all nodes, order preserved, fields correct
+- [x] 4.3 200 with `[]` returns `Ok(vec![])`
+- [x] 4.4 500 returns `SourceError::Status(500)`; 429 returns `Status(429)`
+- [x] 4.5 Response delayed past a 1s timeout returns `SourceError::Request`, and the test asserts it finished in under 3s
+- [x] 4.6 200 with `{"not":"an array"}` and with `garbage` returns `SourceError::Decode`
+- [x] 4.7 Unreachable port returns `SourceError::Request`
+- [x] 4.8 `#[ignore]` live test against the real mempool.space (run manually with `cargo test -- --ignored`)
