@@ -1,7 +1,7 @@
 ## 1. Domain types
 
-- [ ] 1.1 Create `src/domain/mod.rs` and `src/domain/node.rs` with `Node { public_key, alias, capacity_sats: u64, first_seen: DateTime<Utc> }` (derive Debug, Clone, PartialEq, Eq)
-- [ ] 1.2 Add `DomainError` (thiserror) with `InvalidTimestamp(i64)`
+- [x] 1.1 Create `src/domain/mod.rs` and `src/domain/node.rs` with `Node { public_key, alias, capacity_sats: u64, first_seen: DateTime<Utc> }` (derive Debug, Clone, PartialEq, Eq)
+- [x] 1.2 Add `DomainError` (thiserror) with `InvalidTimestamp(i64)`
 
 ## 2. Conversions
 

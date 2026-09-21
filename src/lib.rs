@@ -4,4 +4,5 @@
 //! serves it through a JSON API. See `docs/architecture.md` for an overview.
 
 pub mod config;
+pub mod domain;
 pub mod telemetry;
