@@ -1,15 +1,15 @@
 ## 1. Composition
 
-- [ ] 1.1 `src/app.rs`: `connect_with_retry(url, token)` with capped exponential backoff and cancellation
-- [ ] 1.2 `src/app.rs`: migrate with retry on connection-level errors and fatal on others
+- [x] 1.1 `src/app.rs`: `connect_with_retry(url, token)` with capped exponential backoff and cancellation
+- [x] 1.2 `src/app.rs`: migrate with retry on connection-level errors and fatal on others
 - [ ] 1.3 `src/app.rs`: `App::run(config, listener, token)`: build client + repo, spawn importer, serve with graceful shutdown, join the importer, close the pool
 - [ ] 1.4 `src/main.rs`: telemetry, then config, then bind, then signal handler (ctrl_c + SIGTERM via `tokio::signal::unix`), then `App::run`. Map fatal errors to a logged message and `ExitCode::FAILURE`
 
 ## 2. Unit tests
 
-- [ ] 2.1 Backoff schedule helper: 1, 2, 4, 8, 16, 30, 30, ... (pure function)
-- [ ] 2.2 `connect_with_retry` with an unreachable URL and a token cancelled after 2 attempts (paused time) returns a cancellation result, no panic
-- [ ] 2.3 Error classification: connection-level `sqlx::Error` variants are retryable, others are fatal
+- [x] 2.1 Backoff schedule helper: 1, 2, 4, 8, 16, 30, 30, ... (pure function)
+- [x] 2.2 `connect_with_retry` with an unreachable URL and a token cancelled after 2 attempts (paused time) returns a cancellation result, no panic
+- [x] 2.3 Error classification: connection-level `sqlx::Error` variants are retryable, others are fatal
 
 ## 3. End-to-end tests (`tests/end_to_end.rs`)
 
