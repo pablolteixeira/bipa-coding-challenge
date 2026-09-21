@@ -21,6 +21,7 @@ url = "2.5.8"
 
 [dev-dependencies]
 http-body-util = "0.1.5"
+tokio = { version = "1.53.1", features = ["test-util", "macros", "rt-multi-thread"] }
 tower = { version = "0.5.3", features = ["util"] }
 wiremock = "0.6.5"
 

@@ -5,6 +5,10 @@
 
 pub mod config;
 pub mod domain;
+pub mod importer;
 pub mod source;
 pub mod storage;
 pub mod telemetry;
+
+#[cfg(test)]
+mod test_support;
