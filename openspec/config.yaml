@@ -1,0 +1,25 @@
+schema: spec-driven
+
+context: |
+  Bipa back-end coding challenge: a Rust service that periodically imports
+  Lightning Network node rankings from mempool.space
+  (GET https://mempool.space/api/v1/lightning/nodes/rankings/connectivity),
+  stores them in PostgreSQL and exposes them via GET /nodes as JSON
+  (public_key, alias, capacity in BTC as text, first_seen as RFC 3339 text).
+
+  Hard constraints from the challenge:
+  - Language: Rust. Libraries/DB are free choice.
+  - GET /nodes MUST only read from the database; importing happens in a
+    periodic background routine.
+  - The server MUST NOT crash under any circumstance.
+  - Commits must be logical and small; commit messages and code comments in English.
+  - README following the challenge template.
+
+  Stack: tokio, axum, reqwest (rustls), sqlx (postgres), serde, chrono,
+  thiserror, tracing. Tests: #[sqlx::test], wiremock, tower::ServiceExt.
+  Architecture reference: docs/architecture.md
+
+rules:
+  tasks:
+    - Every task group that adds behaviour MUST include unit-test tasks, and integration-test tasks when it touches I/O (HTTP, DB).
+    - No unwrap/expect/panic in non-test code.
