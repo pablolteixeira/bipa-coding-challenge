@@ -2,8 +2,8 @@
 
 - [x] 1.1 `src/app.rs`: `connect_with_retry(url, token)` with capped exponential backoff and cancellation
 - [x] 1.2 `src/app.rs`: migrate with retry on connection-level errors and fatal on others
-- [ ] 1.3 `src/app.rs`: `App::run(config, listener, token)`: build client + repo, spawn importer, serve with graceful shutdown, join the importer, close the pool
-- [ ] 1.4 `src/main.rs`: telemetry, then config, then bind, then signal handler (ctrl_c + SIGTERM via `tokio::signal::unix`), then `App::run`. Map fatal errors to a logged message and `ExitCode::FAILURE`
+- [x] 1.3 `src/app.rs`: `App::run(config, listener, token)`: build client + repo, spawn importer, serve with graceful shutdown, join the importer, close the pool
+- [x] 1.4 `src/main.rs`: telemetry, then config, then bind, then signal handler (ctrl_c + SIGTERM via `tokio::signal::unix`), then `App::run`. Map fatal errors to a logged message and `ExitCode::FAILURE`
 
 ## 2. Unit tests
 

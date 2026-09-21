@@ -1,13 +1,93 @@
 //! Composition root: builds the concrete components and runs them.
 
 use std::future::Future;
+use std::sync::Arc;
 use std::time::Duration;
 
 use sqlx::PgPool;
 use sqlx::migrate::MigrateError;
+use tokio::net::TcpListener;
 use tokio_util::sync::CancellationToken;
 
-use crate::storage::{self, StorageError};
+use crate::config::Config;
+use crate::http;
+use crate::importer::Importer;
+use crate::source::{MempoolClient, SourceError};
+use crate::storage::{self, PgNodeRepository, StorageError};
+
+/// Failures that prevent the service from starting or keep it from serving.
+#[derive(Debug, thiserror::Error)]
+pub enum AppError {
+    #[error(transparent)]
+    Storage(#[from] StorageError),
+    #[error("failed to build the node source client: {0}")]
+    Source(#[from] SourceError),
+    #[error("HTTP server failed: {0}")]
+    Serve(#[source] std::io::Error),
+}
+
+/// Runs the whole service until `token` is cancelled.
+///
+/// Connects to the database (retrying while it is unreachable), applies the
+/// migrations and then serves. Returns `Ok(())` after a graceful shutdown,
+/// including one requested while still waiting for the database.
+pub async fn run(
+    config: Config,
+    listener: TcpListener,
+    token: CancellationToken,
+) -> Result<(), AppError> {
+    let Some(pool) = connect_with_retry(&config.database_url, &token).await? else {
+        return Ok(());
+    };
+    tracing::info!("connected to database");
+
+    if migrate_with_retry(&pool, &token).await?.is_none() {
+        pool.close().await;
+        return Ok(());
+    }
+    tracing::info!("database migrations applied");
+
+    serve(&config, pool, listener, token).await
+}
+
+/// Runs the importer and the HTTP server side by side on an existing pool,
+/// until `token` is cancelled or the server fails.
+///
+/// Split from [`run`] so tests can drive the full service on an isolated test
+/// database.
+pub async fn serve(
+    config: &Config,
+    pool: PgPool,
+    listener: TcpListener,
+    token: CancellationToken,
+) -> Result<(), AppError> {
+    let source = Arc::new(MempoolClient::new(
+        config.mempool_url.clone(),
+        config.http_client_timeout,
+    )?);
+    let repo = Arc::new(PgNodeRepository::new(pool.clone()));
+
+    let importer = Importer::new(source, Arc::clone(&repo));
+    let importer_task = tokio::spawn(importer.run(config.import_interval, token.clone()));
+
+    if let Ok(addr) = listener.local_addr() {
+        tracing::info!(%addr, "HTTP server listening");
+    }
+    let served = axum::serve(listener, http::router(repo))
+        .with_graceful_shutdown(token.clone().cancelled_owned())
+        .await;
+
+    // Whatever stopped the server, stop the importer too, wait for an
+    // in-flight import to finish and release the database connections.
+    token.cancel();
+    if let Err(err) = importer_task.await {
+        tracing::error!(error = %err, "importer task ended abnormally");
+    }
+    pool.close().await;
+    tracing::info!("shutdown complete");
+
+    served.map_err(AppError::Serve)
+}
 
 const MAX_BACKOFF: Duration = Duration::from_secs(30);
 

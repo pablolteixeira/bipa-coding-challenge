@@ -4,12 +4,13 @@ use tracing_subscriber::EnvFilter;
 use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::util::{SubscriberInitExt, TryInitError};
 
-const DEFAULT_FILTER: &str = "info";
+// sqlx logs harmless Postgres notices (e.g. "relation already exists") at info.
+const DEFAULT_FILTER: &str = "info,sqlx=warn";
 
 /// Installs the global `tracing` subscriber.
 ///
 /// The filter comes from `RUST_LOG` (e.g. `RUST_LOG=bipa_nodes=debug`) and
-/// defaults to `info`. Returns an error instead of panicking when a subscriber
+/// defaults to `info` (sqlx at `warn`). Returns an error instead of panicking when a subscriber
 /// is already installed.
 pub fn init() -> Result<(), TryInitError> {
     let filter =
